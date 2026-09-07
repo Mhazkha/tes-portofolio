@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mhazkha — Web Developer & Digital Designer</title>
+  <meta name="description" content="Portofolio Muhamad Afiq Zian Khairi (Mhazkha) - Web Developer, Machine Learning, Digital Designer & 3D Modeler. Siswa SMKN 1 Purbalingga.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="glow-orb glow-teal"></div>
+  <div class="glow-orb glow-amber"></div>
+
+  <!-- Top Sticky Navigation Pill Trigger -->
+  <header class="top-nav-bar">
+    <button id="menuTrigger" class="nav-pill-btn" aria-label="Buka Menu Navigasi" title="Buka Menu">
+      <span class="pill-indicator"></span>
+      <svg class="chevron-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </button>
+  </header>
+
+  <!-- Fullscreen / Modal Menu Overlay -->
+  <div id="menuOverlay" class="menu-overlay" aria-hidden="true">
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    <div class="menu-container">
+      <div class="menu-header">
+        <a href="#home" class="brand-logo menu-nav-link" data-view="home">Mhazkha<span class="brand-dot">.</span></a>
+        <div class="menu-header-actions">
+          <button id="menuHireBtn" class="btn-hire-pill">Hire me</button>
+          <button id="menuCloseBtn" class="btn-close-menu" aria-label="Tutup Menu">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="menu-grid" aria-label="Menu Utama">
+        <a href="#about" class="menu-card menu-nav-link" data-view="about">
+          <span class="menu-card-num">01</span>
+          <span class="menu-card-title">About</span>
+          <span class="menu-card-desc">Profil, Cerita & Journey</span>
+        </a>
+        <a href="#projects" class="menu-card menu-nav-link" data-view="projects">
+          <span class="menu-card-num">02</span>
+          <span class="menu-card-title">Projects</span>
+          <span class="menu-card-desc">Recent Works & Karya Web/ML</span>
+        </a>
+        <a href="#stack" class="menu-card menu-nav-link" data-view="stack">
+          <span class="menu-card-num">03</span>
+          <span class="menu-card-title">Stack</span>
+          <span class="menu-card-desc">Tech Stack & Tools Logo</span>
+        </a>
+        <a href="#logs" class="menu-card menu-nav-link" data-view="logs">
+          <span class="menu-card-num">04</span>
+          <span class="menu-card-title">Logs</span>
+          <span class="menu-card-desc">Design, 3D, Music, Games</span>
+        </a>
+      </nav>
+
+      <div class="menu-footer">
+        <a href="#home" class="menu-home-btn menu-nav-link" data-view="home">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span>Kembali ke Home</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Container (SPA Views) -->
+  <main class="main-wrapper">
+    
+    <!-- ================= VIEW: HOME ================= -->
+    <section id="view-home" class="spa-view active">
+      <div class="view-header">
+        <span class="brand-text">Mhazkha<span class="brand-dot">.</span></span>
+      </div>
+
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <h1 class="hero-title">
+          Web developer <span class="accent-amp">&amp;</span><br>
+          Digital designer
+        </h1>
+        <p class="hero-bio">
+          Halo! Saya <strong>Muhamad Afiq Zian Khairi</strong> atau <strong class="highlight-text">mhazkha</strong>, siswa SMKN 1 Purbalingga. Saya cukup ahli di bidang website dan juga machine learning, adapun keahlian lain yang saya miliki dalam bidang kreativitas adalah graphic design dan juga 3d modeling.
+        </p>
+      </section>
+
+      <!-- Selected Works Section -->
+      <section class="section-block">
+        <div class="section-badge">
+          <span class="badge-icon">@</span> Selected works
+        </div>
+        
+        <div class="cards-grid cards-grid-3" id="homeSelectedWorks">
+          <!-- Card 1 -->
+          <article class="work-card">
+            <div class="work-card-top">
+              <span class="work-date">24/08</span>
+              <span class="work-category">Web Platform</span>
+            </div>
+            <h3 class="work-title">School Digital Portal</h3>
+            <p class="work-desc">Sistem portal web interaktif siswa dan manajemen tugas berbasis modern UI dan performa cepat.</p>
+            <div class="work-card-bottom">
+              <div class="work-tags">
+                <span class="tag">PHP</span>
+                <span class="tag">Web</span>
+              </div>
+              <button class="btn-view" data-project="portal">View</button>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="work-card">
+            <div class="work-card-top">
+              <span class="work-date">24/05</span>
+              <span class="work-category">Machine Learning</span>
+            </div>
+            <h3 class="work-title">Fruit Classifier ML</h3>
+            <p class="work-desc">Model klasifikasi citra lemon dan jeruk menggunakan CNN berbasis Python dan OpenCV.</p>
+            <div class="work-card-bottom">
+              <div class="work-tags">
+                <span class="tag">Python</span>
+                <span class="tag">ML/AI</span>
+              </div>
+              <button class="btn-view" data-project="ml-classifier">View</button>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="work-card">
+            <div class="work-card-top">
+              <span class="work-date">24/02</span>
+              <span class="work-category">3D / Design</span>
+            </div>
+            <h3 class="work-title">Cyber Aesthetic Assets</h3>
+            <p class="work-desc">Eksplorasi aset 3D low-poly dan clay render untuk elemen interaktif website masa depan.</p>
+            <div class="work-card-bottom">
+              <div class="work-tags">
+                <span class="tag">Blender</span>
+                <span class="tag">Design</span>
+              </div>
+              <button class="btn-view" data-project="3d-assets">View</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="view-all-projects-wrapper">
+          <a href="#projects" class="link-view-all menu-nav-link" data-view="projects">
+            Lihat Semua Projects &rarr;
+          </a>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="section-block contact-section">
+        <div class="section-badge">
+          <span class="badge-icon">@</span> Contact
+        </div>
+        
+        <div class="contact-card">
+          <h2 class="contact-title">Lets talk</h2>
+          <p class="contact-subtitle">Ada hal lain yang ingin ditanyakan?</p>
+          
+          <a href="mailto:ziankhairi14@gmail.com" class="contact-email-link">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+            <span>ziankhairi14@gmail.com</span>
+          </a>
+
+          <div class="socials-wrapper">
+            <span class="socials-label">Socials</span>
+            <div class="socials-links">
+              <a href="https://github.com/Mhazkha" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub Profile">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+              </a>
+              <a href="https://linkedin.com/in/mhazkha" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn Profile">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+              </a>
+              <a href="https://instagram.com/mhazkha" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="Instagram Profile">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ================= VIEW: ABOUT (Rombak + Foto + Journey) ================= -->
+    <section id="view-about" class="spa-view">
+      <div class="view-header">
+        <span class="brand-text">Mhazkha<span class="brand-dot">.</span></span>
+      </div>
+
+      <div class="section-badge">
+        <span class="badge-icon">@</span> About
+      </div>
+
+      <!-- About Profile Content with Avatar -->
+      <section class="about-hero-grid">
+        <div class="about-avatar-card">
+          <div class="avatar-image-container">
+            <!-- Stylized Tech Developer Avatar SVG -->
+            <svg class="avatar-svg" viewBox="0 0 200 200" width="100%" height="100%">
+              <defs>
+                <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#0f262a" />
+                  <stop offset="100%" stop-color="#161b22" />
+                </linearGradient>
+                <linearGradient id="avatarGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#00d2b4" />
+                  <stop offset="100%" stop-color="#3b82f6" />
+                </linearGradient>
+              </defs>
+              <rect width="200" height="200" rx="24" fill="url(#avatarBg)" />
+              <!-- Hoodie / Body -->
+              <path d="M40 200 C40 150, 70 140, 100 140 C130 140, 160 150, 160 200 Z" fill="#1c2430" />
+              <path d="M70 145 L100 175 L130 145" fill="none" stroke="url(#avatarGlow)" stroke-width="4" stroke-linecap="round" />
+              <!-- Head & Hair -->
+              <ellipse cx="100" cy="95" rx="38" ry="46" fill="#f5c29b" />
+              <path d="M60 90 C60 55, 80 40, 100 40 C125 40, 142 55, 140 90 C130 75, 115 70, 100 70 C85 70, 70 75, 60 90 Z" fill="#1e1e24" />
+              <!-- Glasses / Tech Visor -->
+              <rect x="70" y="85" width="25" height="18" rx="4" fill="#091316" stroke="#00d2b4" stroke-width="2.5" />
+              <rect x="105" y="85" width="25" height="18" rx="4" fill="#091316" stroke="#00d2b4" stroke-width="2.5" />
+              <line x1="95" y1="94" x2="105" y2="94" stroke="#00d2b4" stroke-width="2.5" />
+              <!-- Headphones -->
+              <path d="M54 90 C54 60, 146 60, 146 90" fill="none" stroke="#334155" stroke-width="6" stroke-linecap="round" />
+              <rect x="50" y="85" width="10" height="25" rx="4" fill="#00d2b4" />
+              <rect x="140" y="85" width="10" height="25" rx="4" fill="#00d2b4" />
+            </svg>
+          </div>
+          <div class="avatar-info">
+            <h3 class="avatar-name">Muhamad Afiq Zian Khairi</h3>
+            <span class="avatar-tag">@mhazkha &bull; SMKN 1 Purbalingga</span>
+            <span class="avatar-status">
+              <span class="status-dot"></span> Available for projects &amp; collaborations
+            </span>
+          </div>
+        </div>
+
+        <div class="about-text-content">
+          <div class="about-info-block">
+            <h2 class="about-subheading">Sedikit cerita<br><span class="accent-text">Tentang saya</span></h2>
+            <p class="about-text">
+              Saya adalah seorang pelajar yang memiliki dedikasi dan antusiasme tinggi di dunia teknologi digital dan pemrograman. Perjalanan saya dimulai dari ketertarikan mengeksplorasi logika di balik website interaktif, hingga merambah ke dunia pemodelan Machine Learning dan kreasi visual 3D.
+            </p>
+            <p class="about-text">
+              Bagi saya, perpaduan antara logika teknis yang presisi dan estetika visual modern adalah kunci untuk menciptakan pengalaman pengguna yang memukau dan solutif.
+            </p>
+          </div>
+
+          <div class="about-info-block">
+            <h2 class="about-subheading">Detail profil</h2>
+            <ul class="profile-details-list">
+              <li><strong>Pendidikan:</strong> SMKN 1 Purbalingga (Rekayasa Perangkat Lunak / IT)</li>
+              <li><strong>Fokus Utama:</strong> Fullstack Web Development &amp; Machine Learning (Computer Vision &amp; Classification)</li>
+              <li><strong>Kreativitas Tambahan:</strong> UI/UX Design (Figma), 3D Modeling (Blender), Graphic Art</li>
+              <li><strong>Lokasi:</strong> Purbalingga / Jawa Tengah, Indonesia</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Journey Section (Moved from Stack page to About page) -->
+      <section class="section-block journey-section">
+        <div class="section-badge">
+          <span class="badge-icon">&bull;</span> Journey &amp; Milestones
+        </div>
+
+        <div class="timeline-container">
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">2024 — Sekarang</span>
+              <h4 class="timeline-title">Eksplorasi Machine Learning &amp; AI Integration</h4>
+              <p class="timeline-desc">Mengembangkan model klasifikasi citra berbasis Python (CNN &amp; OpenCV), eksplorasi data science, serta integrasi AI ke aplikasi web.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">2023 — 2024</span>
+              <h4 class="timeline-title">SMKN 1 Purbalingga &amp; Web Development Mastery</h4>
+              <p class="timeline-desc">Mendalami rekayasa perangkat lunak web (HTML, CSS, JS, PHP, MySQL, React), pengerjaan proyek PJBL sekolah, dan freelance UI/UX.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content">
+              <span class="timeline-date">2022 — 2023</span>
+              <h4 class="timeline-title">Desain Digital, Kreativitas &amp; 3D Modeling</h4>
+              <p class="timeline-desc">Memulai eksplorasi pembuatan aset visual di Figma, ilustrasi grafis, serta render objek 3D low-poly di Blender.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ================= VIEW: PROJECTS (Works) ================= -->
+    <section id="view-projects" class="spa-view">
+      <div class="view-header">
+        <span class="brand-text">Mhazkha<span class="brand-dot">.</span></span>
+      </div>
+
+      <div class="section-badge">
+        <span class="badge-icon">@</span> Projects
+      </div>
+
+      <div class="projects-hero-header">
+        <h2 class="projects-main-title">Recent Works</h2>
+        <p class="projects-subtitle">Koleksi proyek pilihan di bidang web development, machine learning, dan karya digital.</p>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="filter-pills" id="projectFilters">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="web">Web Development</button>
+        <button class="filter-btn" data-filter="ml">Machine Learning</button>
+        <button class="filter-btn" data-filter="creative">3D &amp; Design</button>
+      </div>
+
+      <!-- Projects Grid Layout (Asymmetric matching mockup) -->
+      <div class="projects-catalog-grid" id="projectsCatalog">
+        
+        <!-- Project 1 -->
+        <article class="project-card-full" data-category="web">
+          <div class="proj-header">
+            <span class="proj-date">24/08</span>
+            <span class="proj-type">Web Application</span>
+          </div>
+          <h3 class="proj-title">SMKN 1 Purbalingga Portal System</h3>
+          <p class="proj-desc">
+            Platform portal web responsif untuk memfasilitasi kebutuhan informasi sekolah, manajemen data siswa, dan akses materi pembelajaran secara real-time.
+          </p>
+          <div class="proj-footer">
+            <div class="proj-tags">
+              <span class="tag tag-lang">PHP / JS</span>
+              <span class="tag tag-os">Web</span>
+            </div>
+            <button class="btn-view" data-project="portal">View Details</button>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card-full" data-category="ml">
+          <div class="proj-header">
+            <span class="proj-date">24/06</span>
+            <span class="proj-type">Machine Learning</span>
+          </div>
+          <h3 class="proj-title">Klasifikasi Citra Lemon &amp; Jeruk</h3>
+          <p class="proj-desc">
+            Sistem klasifikasi citra otomatis menggunakan Convolutional Neural Network (CNN) untuk mendeteksi tingkat kematangan buah dengan akurasi tinggi.
+          </p>
+          <div class="proj-footer">
+            <div class="proj-tags">
+              <span class="tag tag-lang">Python / OpenCV</span>
+              <span class="tag tag-os">ML / Desktop</span>
+            </div>
+            <button class="btn-view" data-project="ml-classifier">View Details</button>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card-full" data-category="ml">
+          <div class="proj-header">
+            <span class="proj-date">24/04</span>
+            <span class="proj-type">Data Science &amp; ML</span>
+          </div>
+          <h3 class="proj-title">Prediksi Nilai TKA (Jupyter Notebook)</h3>
+          <p class="proj-desc">
+            Model regresi dan analisis data prediktif untuk memetakan capaian nilai Tes Kemampuan Akademik siswa berdasarkan data historis belajar.
+          </p>
+          <div class="proj-footer">
+            <div class="proj-tags">
+              <span class="tag tag-lang">Python / Pandas</span>
+              <span class="tag tag-os">Data Sci</span>
+            </div>
+            <button class="btn-view" data-project="tka-predict">View Details</button>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card-full" data-category="web">
+          <div class="proj-header">
+            <span class="proj-date">23/11</span>
+            <span class="proj-type">Frontend Web</span>
+          </div>
+          <h3 class="proj-title">PJBL Web Semarang City Guide</h3>
+          <p class="proj-desc">
+            Website interaktif panduan wisata kota Semarang dengan antarmuka dinamis, integrasi peta destinasi, dan animasi interaktif.
+          </p>
+          <div class="proj-footer">
+            <div class="proj-tags">
+              <span class="tag tag-lang">React / CSS</span>
+              <span class="tag tag-os">Web</span>
+            </div>
+            <button class="btn-view" data-project="pjbl-semarang">View Details</button>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="project-card-full" data-category="creative">
+          <div class="proj-header">
+            <span class="proj-date">24/01</span>
+            <span class="proj-type">3D Modeling</span>
+          </div>
+          <h3 class="proj-title">Cyber Aesthetic 3D Environment</h3>
+          <p class="proj-desc">
+            Rangkaian aset 3D bertema cyber tech low-poly yang dirancang menggunakan Blender untuk kebutuhan aset visual website dan game indie.
+          </p>
+          <div class="proj-footer">
+            <div class="proj-tags">
+              <span class="tag tag-lang">Blender</span>
+              <span class="tag tag-os">3D Art</span>
+            </div>
+            <button class="btn-view" data-project="3d-assets">View Details</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ================= VIEW: STACK (Iconized with SVG Logos) ================= -->
+    <section id="view-stack" class="spa-view">
+      <div class="view-header">
+        <span class="brand-text">Mhazkha<span class="brand-dot">.</span></span>
+      </div>
+
+      <div class="section-badge">
+        <span class="badge-icon">@</span> Stack
+      </div>
+
+      <div class="stack-hero-header">
+        <h2 class="stack-main-title">Tech Stack &amp; Tools</h2>
+        <p class="stack-subtitle">Teknologi, bahasa pemrograman, dan alat kreasi yang biasa saya gunakan.</p>
+      </div>
+
+      <!-- Tech Stack Category Grids -->
+      <div class="stack-categories-container">
+        
+        <!-- Group 1: Languages & Core Web -->
+        <div class="stack-group">
+          <h3 class="stack-group-title">Languages &amp; Core Web</h3>
+          <div class="stack-grid">
+            
+            <!-- HTML5 -->
+            <div class="stack-card" data-tech="HTML5" title="HTML5 - Semantic Markup">
+              <div class="stack-icon-wrap">
+                <svg viewBox="0 0 128 128" width="42" height="42">
+                  <path fill="#E44D26" d="M27.854 116.354l-10.748-120.354h93.788l-10.758 120.334-36.168 10.02z"/>
+                  <path fill="#F16529" d="M64 118.098l29.418-8.15 8.916-99.782h-38.334z"/>
+                  <path fill="#EBEBEB" d="M64 45.418h-18.736l-1.306-14.64h20.042v-14.64h-34.98l3.666 41.07h31.314zm0 37.336l-15.714-4.242-1.004-11.246h-14.708l1.974 22.112 29.452 8.174z"/>
+                  <path fill="#FFF" d="M63.954 69.154h15.26l-1.442 16.148-13.818 3.732v15.092l28.528-7.908 3.708-41.516h-32.236zm.046-53.016v14.64h34.694l-1.308 14.64h-33.386v14.64h48.33l-3.92-43.92z"/>
+                </svg>
+              </div>
+              <span class="stack-name">HTML</span>
+            </div>
+
+            <!-- CSS3 -->
+            <div class="stack-card" data-tech="CSS3" title="CSS3 - Modern Styling & Animations">
+              <div class="stack-icon-wrap">
+                <svg viewBox="0 0 128 128" width="42" height="42">
+                  <path fill="#1572B6" d="M27.854 116.354l-10.748-120.354h93.788l-10.758 120.334-36.168 10.02z"/>
+                  <path fill="#33A9DC" d="M64 118.098l29.418-8.15 8.916-99.782h-38.334z"/>
+                  <path fill="#EBEBEB" d="M64 45.418h-18.736l-1.306-14.64h20.042v-14.64h-34.98l3.666 41.07h31.314zm0 37.336l-15.714-4.242-1.004-11.246h-14.708l1.974 22.112 29.452 8.174z"/>
+                  <path fill="#FFF" d="M63.954 69.154h15.26l-1.442 16.148-13.818 3.732v15.092l28.528-7.908 3.708-41.516h-32.236zm.046-53.016v14.64h34.694l-1.308 14.64h-33.386v14.64h48.33l-3.92-43.92z"/>
+                </svg>
+              </div>
+              <span class="stack-name">CSS</span>
+            </div>
+
+            <!-- JavaScript -->
+            <div class="stack-card" data-tech="JavaScript" title="JavaScript - ES6+ Logic & Interactivity">
+              <div class="stack-icon-wrap">
+                <svg viewBox="0 0 128 128" width="42" height="42">
+                  <path fill="#F7DF1E" d="M0 0h128v128H0z"/>
+                  <path d="M67.312 103.68c3.328 5.728 7.68 9.408 15.36 9.408 6.464 0 10.624-3.2 10.624-7.616 0-5.312-4.224-7.232-11.328-10.368l-3.872-1.664c-11.2-4.736-18.624-10.624-18.624-23.488 0-11.648 8.96-20.672 22.912-20.672 9.92 0 17.024 3.776 22.144 12.672l-10.88 6.976c-2.432-4.352-5.12-6.144-11.264-6.144-5.184 0-8.768 3.264-8.768 7.36 0 4.992 3.2 6.976 10.24 10.048l3.84 1.664c13.12 5.632 19.968 11.456 19.968 24.32 0 13.952-10.88 21.824-25.024 21.824-14.016 0-23.04-7.488-27.2-16.64l11.872-7.68zm-41.984 1.408c2.496 4.352 4.8 7.936 9.728 7.936 4.992 0 8.192-2.368 8.192-11.392V50.688h14.208v51.136c0 16.512-9.664 24.128-23.168 24.128-11.968 0-18.944-6.08-22.656-14.72l13.7-8.144z"/>
+                </svg>
+              </div>
+              <span class="stack-name">JS</span>
+            </div>
+
+            <!-- PHP -->
+            <div class="stack-card" data-tech="PHP" title="PHP - Backend Web Logic">
+              <div class="stack-icon-wrap">
+                <svg viewBox="0 0 128 128" width="42" height="42">
+                  <path fill="#777BB4" d="M64 12.8C28.65 12.8 0 35.72 0 64s28.65 51.2 64 51.2 64-22.92 64-51.2-28.65-51.2-64-51.2zm-28.8 68.8h-9.6l6.4-35.2h15.2c9.6 0 14.4 4.8 12.8 13.6-1.6 8.8-8 13.6-16 13.6h-5.6l-3.2 8zm34.4 0h-9.6l6.4-35.2h10.4l-2.4 13.6h8c9.6 0 14.4 4.8 12.8 13.6-1.6 8.8-8 13.6-16 13.6h-9.6zm34.4 0h-9.6l6.4-35.2h15.2c9.6 0 14.4 4.8 12.8 13.6-1.6 8.8-8 13.6-16 13.6h-5.6l-3.2 8z"/>
+                  <path fill="#FFF" d="M38.4 56.8h5.6c4 0 6.4-2.4 7.2-6.4.8-4-1.6-6.4-5.6-6.4h-5.6l-1.6 12.8zm34.4 0h5.6c4 0 6.4-2.4 7.2-6.4.8-4-1.6-6.4-5.6-6.4h-5.6l-1.6 12.8zm34.4 0h5.6c4 0 6.4-2.4 7.2-6.4.8-4-1.6-6.4-5.6-6.4h-5.6l-1.6 12.8z"/>
+                </svg>
+              </div>
+              <span class="stack-name">PHP</span>
+            </div>
+
+            <!-- Python -->
+            <div class="stack-card" data-tech="Python" title="Python - Machine Learning & Scripting">
+              <div class="stack-icon-wrap">
+                <svg viewBox="0 0 128 128" width="42" height="42">
+                  <path fill="#3776AB" d="M63.2 2c-15.6 0-26.4 1.4-26.4 1.4s-15.4 1.7-15.4 17.6c0 14.3 11.2 15.6 11.2 15.6h15.7v4.6H26.9C10.7 41.2 2 52.8 2 68.8c0 17.8 14.4 18.2 14.4 18.2h8.6V74.4c0-14.7 12.7-14.7 12.7-14.7h24.7c11.9 0 11.9-11.4 11.9-11.4V23.7C74.3 9.4 63.2 2 63.2 2zm-12 8.8c2.8 0 5.1 2.3 5.1 5.1s-2.3 5.1-5.1 5.1-5.1-2.3-5.1-5.1 2.3-5.1 5.1-5.1z"/>
+                  <path fill="#FFD43B" d="M64.8 126c15.6 0 26.4-1.4 26.4-1.4s15.4-1.7 15.4-17.6c0-14.3-11.2-15.6-11.2-15.6H79.7v-4.6h21.4c16.2 0 24.9-11.6 24.9-27.6 0-17.8-14.4-18.2-14.4-18.2h-8.6v12.6c0 14.7-12.7 14.7-12.7 14.7H45.6c-11.9 0-11.9 11.4-11.9 11.4v24.6c0 14.3 11.1 21.7 31.1 21.7zm12-8.8c-2.8 0-5.1-2.3-5.1-5.1s2.3-5.1 5.1-5.1 5.1 2.3 5.1 5.1-2.3 5.1-5.1 5.1z"/>
+                </svg>
+              </div>
+              <span class="stack-name">Python</span>
+            </div>
+
+            <!-- C++ -->
+            <div class="stack-card" data-tech="C++" title="C++ - Algoritma & Logic Dasar">
+              <div class="stack-icon-wrap">
+                <svg viewBox="0 0 128 128" width="42" height="42">
+                  <path fill="#00599C" d="M64 14L14 42.9v57.7L64 129.5l50-28.9V42.9L64 14zm0 18.2l34.2 19.7v39.5L64 111.1 29.8 91.4V51.9L64 32.2z"/>
+                  <path fill="#659AD2" d="M57 52.3c-6.8-4-15.5-1.7-19.5 5.1s-1.7 15.5 5.1 19.5c6.8 4 15.5 1.7 19.5-5.1l7.8 4.5c-6.3 11-20.4 14.7-31.4 8.4S23.8 64.3 30.1 53.3s20.4-14.7 31.4-8.4l-4.5 7.4zm23 11.7h-4v-4h-4v4h-4v4h4v4h4v-4h4v-4zm18 0h-4v-4h-4v4h-4v4h4v4h4v-4h4v-4z"/>
+                </svg>
+              </div>
+              <span class="stack-name">C++</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Group 2: Frameworks, Databases & ML -->
+        <div class="stack-group">
+          <h3 class="stack-group-title">Frameworks, Data &amp; AI</h3>
+          <div class="stack-grid">
+            
+            <!-- React -->
+            <div class="stack-card" data-tech="React" title="React - Modern Frontend Library">
+              <div class="stack-icon-wrap">
+                <svg viewBox="0 0 128 128" width="42" height="42">
+                  <ellipse cx="64" cy="64" rx="28" ry="60" fill="none" stroke="#61DAFB" stroke-width="4.5" transform="rotate(30 64 64)"/>
+                  <ellipse cx="64" cy="64" rx="28" ry="60" fill="none" stroke="#61DAFB" stroke-width="4.5" transform="rotate(90 64 64)"/>
+                  <ellipse cx="64" cy="64" rx="28" ry="60" fill="none" stroke="#61DAFB" stroke-width="4.5" transform="rotate(150 64 64)"/>
+                  <circle cx="64" cy="64" r="9" fill="#61DAFB"/>
+                </svg>
+              </div>
+              <span class="stack-name">React</span>
+            </div>
+
+            <!-- MySQL -->
+            <div class="stack-card" data-tech="MySQL" title="MySQL - Relational Database">
+              <div class="stack-icon-wrap">
+                <svg viewBox="0 0 128 128" width="42" height="42">
+                  <path fill="#4479A1" d="M64 14C36.4 14 14 36.4 14 64s22.4 50 50 50 50-22.4 50-50S91.6 14 64 14zm25.6 62.4c-3.2 7.2-9.6 11.2-17.6 11.2-12 0-19.2-9.6-19.2-22.4s7.2-22.4 19.2-22.4c8 0 14.4 4 17.6 11.2l-6.4 3.2c-2.4-4.8-6.4-7.2-11.2-7.2-7.2 0-11.2 6.4-11.2 15.2s4 15.2 11.2 15.2c4.8 0 8.8-2.4 11.2-7.2l6.4 3.2z"/>
+                </svg>
+              </div>
+              <span class="stack-name">MySQL</span>
+            </div>
+
+            <!-- Linux -->
+            <div class="stack-card" data-tech="Linux" title="Linux - Server OS & Terminal Environment">
+              <div class="stack-icon-wrap">
+                <svg viewBox="0 0 128 128" width="42" height="42">
+                  <path fill="#FCC624" d="M64 10c-15 0-25 15-25 35 0 8 2 16 5 22-8 6-13 16-13 28 0 18 15 23 33 23s33-5 33-23c0-12-5-22-13-28 3-6 5-14 5-22 0-20-10-35-25-35z"/>
+                  <circle cx="54" cy="40" r="4" fill="#000"/>
+                  <circle cx="74" cy="40" r="4" fill="#000"/>
+                  <path d="M58 50 C60 55, 68 55, 70 50 Z" fill="#E65100"/>
+                </svg>
+              </div>
+              <span class="stack-name">Linux</span>
+            </div>
+
+            <!-- Git -->
+            <div class="stack-card" data-tech="Git" title="Git - Version Control">
+              <div class="stack-icon-wrap">
+                <svg viewBox="0 0 128 128" width="42" height="42">
+                  <path fill="#F05032" d="M125.7 57.6L70.4 2.3c-3.1-3.1-8.1-3.1-11.2 0L45.4 16.1l14.2 14.2c3.3-1.1 7.1-.4 9.8 2.3 2.7 2.7 3.4 6.5 2.3 9.8l13.7 13.7c3.3-1.1 7.1-.4 9.8 2.3 3.8 3.8 3.8 10 0 13.8s-10 3.8-13.8 0c-2.8-2.8-3.4-6.8-2-10.2L66.3 49v35.4c1 .6 1.9 1.4 2.6 2.2 3.8 3.8 3.8 10 0 13.8s-10 3.8-13.8 0c-3.8-3.8-3.8-10 0-13.8.9-.9 2-1.6 3.2-2.1V48.1c-1.2-.5-2.3-1.2-3.2-2.1-2.8-2.8-3.4-6.8-2-10.2L38.9 21.6 2.3 58.2c-3.1 3.1-3.1 8.1 0 11.2l55.3 55.3c3.1 3.1 8.1 3.1 11.2 0l56.9-55.9c3.1-3.1 3.1-8.1 0-11.2z"/>
+                </svg>
+              </div>
+              <span class="stack-name">Git</span>
+            </div>
+
+            <!-- GitHub -->
+            <div class="stack-card" data-tech="GitHub" title="GitHub - Collaboration & CI/CD">
+              <div class="stack-icon-wrap">
+                <svg viewBox="0 0 128 128" width="42" height="42" fill="#FFF">
+                  <path d="M64 0C28.65 0 0 28.65 0 64c0 28.3 18.35 52.3 43.8 60.8 3.2.6 4.4-1.4 4.4-3.1 0-1.5-.1-6.6-.1-12-17.8 3.9-21.6-7.7-21.6-7.7-2.9-7.4-7.1-9.4-7.1-9.4-5.8-4 .4-3.9.4-3.9 6.4.5 9.8 6.6 9.8 6.6 5.7 9.8 15 7 18.6 5.3.6-4.2 2.3-7 4.1-8.6-14.2-1.6-29.2-7.1-29.2-31.7 0-7 2.5-12.7 6.6-17.2-.7-1.6-2.9-8.2.6-17 0 0 5.4-1.7 17.7 6.6 5.1-1.4 10.6-2.2 16-2.2s10.9.7 16 2.2c12.3-8.3 17.7-6.6 17.7-6.6 3.5 8.8 1.3 15.4.6 17 4.1 4.5 6.6 10.2 6.6 17.2 0 24.7-15 30.1-29.3 31.7 2.3 2 4.4 5.9 4.4 11.9 0 8.6-.1 15.5-.1 17.7 0 1.7 1.2 3.7 4.4 3.1 25.4-8.5 43.7-32.5 43.7-60.8C128 28.65 99.35 0 64 0z"/>
+                </svg>
+              </div>
+              <span class="stack-name">GitHub</span>
+            </div>
+
+            <!-- Figma -->
+            <div class="stack-card" data-tech="Figma" title="Figma - UI/UX & Prototype Design">
+              <div class="stack-icon-wrap">
+                <svg viewBox="0 0 128 128" width="42" height="42">
+                  <path fill="#0ACF83" d="M42.7 128c11.8 0 21.3-9.5 21.3-21.3V85.3H42.7c-11.8 0-21.3 9.5-21.3 21.3s9.5 21.4 21.3 21.4z"/>
+                  <path fill="#A259FF" d="M21.3 64c0-11.8 9.5-21.3 21.3-21.3h21.3V85.3H42.7C30.8 85.3 21.3 75.8 21.3 64z"/>
+                  <path fill="#F24E1E" d="M21.3 21.3C21.3 9.5 30.8 0 42.7 0h21.3v42.7H42.7C30.8 42.7 21.3 33.2 21.3 21.3z"/>
+                  <path fill="#FF7262" d="M64 0h21.3c11.8 0 21.3 9.5 21.3 21.3s-9.5 21.3-21.3 21.3H64V0z"/>
+                  <circle fill="#1ABCFE" cx="85.3" cy="64" r="21.3"/>
+                </svg>
+              </div>
+              <span class="stack-name">Figma</span>
+            </div>
+
+            <!-- Blender -->
+            <div class="stack-card" data-tech="Blender" title="Blender - 3D Modeling & Rendering">
+              <div class="stack-icon-wrap">
+                <svg viewBox="0 0 128 128" width="42" height="42">
+                  <path fill="#EA7600" d="M64 14C36.4 14 14 36.4 14 64s22.4 50 50 50 50-22.4 50-50S91.6 14 64 14zm-1 85c-15.5 0-28-12.5-28-28s12.5-28 28-28c4.6 0 8.9 1.1 12.8 3.1L58.5 59.8c-2.3-1.1-4.9-1.8-7.5-1.8-9.4 0-17 7.6-17 17s7.6 17 17 17c8.5 0 15.5-6.2 16.8-14.4l14.1 6.8C78.3 91.9 69.8 99 63 99z"/>
+                  <circle cx="63" cy="75" r="7" fill="#225780"/>
+                </svg>
+              </div>
+              <span class="stack-name">Blender</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= VIEW: LOGS (Life Logs) ================= -->
+    <section id="view-logs" class="spa-view">
+      <div class="view-header">
+        <span class="brand-text">Mhazkha<span class="brand-dot">.</span></span>
+      </div>
+
+      <div class="section-badge">
+        <span class="badge-icon">@</span> Logs
+      </div>
+
+      <div class="logs-hero-header">
+        <h2 class="logs-main-title">Life logs</h2>
+        <p class="logs-subtitle">Catatan aktivitas kreatif dan eksplorasi di luar dunia ngoding.</p>
+      </div>
+
+      <!-- Logs Filter -->
+      <div class="filter-pills" id="logFilters">
+        <button class="filter-btn active" data-logfilter="all">All Activities</button>
+        <button class="filter-btn" data-logfilter="design">Design</button>
+        <button class="filter-btn" data-logfilter="3d">3D Art</button>
+        <button class="filter-btn" data-logfilter="music">Music</button>
+        <button class="filter-btn" data-logfilter="games">Games</button>
+      </div>
+
+      <!-- Life Logs Cards Grid -->
+      <div class="logs-cards-grid" id="logsCatalog">
+        
+        <!-- Log 1: Design -->
+        <article class="log-card" data-logcategory="design">
+          <div class="log-card-header">
+            <span class="log-date">24/09</span>
+            <span class="log-badge badge-design">Design</span>
+          </div>
+          <div class="log-visual visual-design">
+            <div class="visual-art-box">
+              <span class="art-badge">UI/UX</span>
+              <p class="art-preview-text">Cyber-minimalism Design Exploration</p>
+            </div>
+          </div>
+          <h3 class="log-title">Eksplorasi Dark Mode Glassmorphism</h3>
+          <p class="log-desc">
+            Bereksperimen dengan kontras tinggi, palet neon teal, dan tipografi modern untuk antarmuka dashboard masa depan di Figma.
+          </p>
+        </article>
+
+        <!-- Log 2: 3D Art -->
+        <article class="log-card" data-logcategory="3d">
+          <div class="log-card-header">
+            <span class="log-date">24/08</span>
+            <span class="log-badge badge-3d">3D</span>
+          </div>
+          <div class="log-visual visual-3d">
+            <div class="visual-art-box">
+              <span class="art-badge">Blender</span>
+              <p class="art-preview-text">Isometric Tech Room &amp; Neon Shader</p>
+            </div>
+          </div>
+          <h3 class="log-title">Render Isometrik Kamar Tech Developer</h3>
+          <p class="log-desc">
+            Membuat model 3D ruangan developer dengan setup dual monitor, pencahayaan neon ambient, dan tekstur clay shader.
+          </p>
+        </article>
+
+        <!-- Log 3: Music -->
+        <article class="log-card" data-logcategory="music">
+          <div class="log-card-header">
+            <span class="log-date">24/07</span>
+            <span class="log-badge badge-music">Music</span>
+          </div>
+          <div class="log-visual visual-music">
+            <div class="visual-art-box">
+              <span class="art-badge">Lofi / Synth</span>
+              <p class="art-preview-text">&sung; Late Night Coding Beats</p>
+            </div>
+          </div>
+          <h3 class="log-title">Playlist Penunjang Fokus Coding</h3>
+          <p class="log-desc">
+            Mengumpulkan track synthwave dan chill lofi beats yang membantu menjaga ritme konsentrasi saat sesi deep work ngoding malam hari.
+          </p>
+        </article>
+
+        <!-- Log 4: Games -->
+        <article class="log-card" data-logcategory="games">
+          <div class="log-card-header">
+            <span class="log-date">24/06</span>
+            <span class="log-badge badge-games">Games</span>
+          </div>
+          <div class="log-visual visual-games">
+            <div class="visual-art-box">
+              <span class="art-badge">Gaming</span>
+              <p class="art-preview-text">RPG Mechanics &amp; Pixel Aesthetics</p>
+            </div>
+          </div>
+          <h3 class="log-title">Analisis Game UI &amp; Mekanisme Interaksi</h3>
+          <p class="log-desc">
+            Mempelajari bagaimana game indie merancang sistem menu dan HUD yang imersif sebagai inspirasi desain web interaktif.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Project Detail Modal -->
+  <div id="projectModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-card">
+      <button class="btn-modal-close" id="modalCloseBtn" aria-label="Tutup Detail Proyek">&times;</button>
+      <div id="modalContent" class="modal-body">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Hire Me / Quick Contact Modal -->
+  <div id="hireModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-backdrop" id="hireBackdrop"></div>
+    <div class="modal-card hire-modal-card">
+      <button class="btn-modal-close" id="hireCloseBtn" aria-label="Tutup">&times;</button>
+      <div class="hire-modal-body">
+        <h2 class="hire-title">Let's Work Together!</h2>
+        <p class="hire-desc">Tertarik untuk berkolaborasi dalam proyek web, machine learning, atau desain digital? Hubungi saya sekarang:</p>
+        
+        <div class="hire-action-box">
+          <span class="hire-label">Email Langsung:</span>
+          <a href="mailto:ziankhairi14@gmail.com" class="hire-email-badge">ziankhairi14@gmail.com</a>
+        </div>
+
+        <div class="hire-direct-actions">
+          <a href="mailto:ziankhairi14@gmail.com?subject=Kolaborasi%20Projek%20dengan%20Mhazkha" class="btn-send-mail">
+            Kirim Email Sekarang &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
