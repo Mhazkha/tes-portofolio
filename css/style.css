@@ -32,7 +32,7 @@
   --glow-amber: rgba(245, 158, 11, 0.15);
 
   /* Fonts */
-  --font-main: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-main: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Transitions */
@@ -91,65 +91,103 @@ body {
   left: -120px;
 }
 
-/* ================= TOP PILL NAV TRIGGER ================= */
+/* ================= TOP FULL-WIDTH APP BAR (MOBILE / APP STYLE) ================= */
 .top-nav-bar {
   position: sticky;
-  top: 18px;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
   z-index: 100;
-  padding: 0 1rem;
+  padding: 0;
+  background: #092024;
+  border-bottom: 1.5px solid var(--accent-teal);
+  box-shadow: 0 4px 20px rgba(0, 210, 180, 0.15);
 }
 
-.nav-pill-btn {
+.top-bar-inner {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 2rem;
+}
+
+.top-bar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.top-bar-logo {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.top-bar-status-badge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 6px;
-  padding: 8px 24px;
-  background: #113637;
-  border: 1.5px solid var(--accent-teal);
-  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   color: var(--accent-teal);
-  cursor: pointer;
-  box-shadow: 0 4px 20px rgba(0, 210, 180, 0.25);
-  transition: transform var(--trans-fast), box-shadow var(--trans-fast), background var(--trans-fast);
+  background: rgba(0, 210, 180, 0.12);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(0, 210, 180, 0.3);
 }
 
-.nav-pill-btn:hover {
-  transform: translateY(-2px);
-  background: #164647;
-  box-shadow: 0 8px 26px rgba(0, 210, 180, 0.4);
-}
-
-.nav-pill-btn:active {
-  transform: translateY(1px);
-}
-
-.pill-indicator {
-  width: 24px;
-  height: 4px;
+.status-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
   background: var(--accent-teal);
-  border-radius: 2px;
+  box-shadow: 0 0 8px var(--accent-teal);
 }
 
-.chevron-icon {
-  stroke: var(--accent-teal);
+.nav-bar-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 18px;
+  background: var(--accent-teal);
+  color: var(--text-inverse);
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: transform var(--trans-fast), opacity var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.nav-bar-menu-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 210, 180, 0.4);
+}
+
+.nav-bar-menu-btn .chevron-icon {
+  stroke: var(--text-inverse);
   transition: transform var(--trans-smooth);
 }
 
-.nav-pill-btn:hover .chevron-icon {
+.nav-bar-menu-btn:hover .chevron-icon {
   transform: translateY(2px);
 }
 
-/* ================= MENU OVERLAY ================= */
+/* ================= MENU OVERLAY (SLIDE DOWN FROM TOP) ================= */
 .menu-overlay {
   position: fixed;
   inset: 0;
   z-index: 200;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--trans-smooth);
@@ -169,19 +207,19 @@ body {
 
 .menu-container {
   position: relative;
-  width: 90%;
-  max-width: 680px;
+  width: 100%;
+  max-width: 100%;
   background: var(--bg-surface);
-  border: 1px solid var(--border-focus);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px var(--glow-teal);
-  transform: scale(0.95) translateY(-20px);
-  transition: transform var(--trans-smooth);
+  border-bottom: 2px solid var(--accent-teal);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  padding: 2rem 2.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 10px 30px var(--glow-teal);
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .menu-overlay.active .menu-container {
-  transform: scale(1) translateY(0);
+  transform: translateY(0);
 }
 
 .menu-header {
@@ -333,13 +371,14 @@ body {
   color: var(--accent-teal);
 }
 
-/* ================= MAIN WRAPPER & SPA VIEWS ================= */
+/* ================= MAIN WRAPPER & SPA VIEWS (LEFT-ALIGNED) ================= */
 .main-wrapper {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 1.5rem 1.5rem 5rem;
+  max-width: 1100px;
+  margin: 0;
+  padding: 2.5rem 2rem 5rem;
   position: relative;
   z-index: 10;
+  text-align: left;
 }
 
 .spa-view {
@@ -1140,17 +1179,17 @@ body {
   border: 1px solid var(--border-focus);
   border-radius: var(--radius-lg);
   width: 100%;
-  max-width: 600px;
+  max-width: 840px;
   max-height: 85vh;
   overflow-y: auto;
-  padding: 2rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--glow-teal);
-  transform: scale(0.95);
+  padding: 2.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 30px var(--glow-teal);
+  transform: translateY(20px);
   transition: transform var(--trans-smooth);
 }
 
 .modal-overlay.active .modal-card {
-  transform: scale(1);
+  transform: translateY(0);
 }
 
 .btn-modal-close {

@@ -7,7 +7,7 @@
   <meta name="description" content="Portofolio Muhamad Afiq Zian Khairi (Mhazkha) - Web Developer, Machine Learning, Digital Designer & 3D Modeler. Siswa SMKN 1 Purbalingga.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,17 +15,26 @@
   <div class="glow-orb glow-teal"></div>
   <div class="glow-orb glow-amber"></div>
 
-  <!-- Top Sticky Navigation Pill Trigger -->
+  <!-- Full-Width Top Bar (Mobile / App Bar Style) -->
   <header class="top-nav-bar">
-    <button id="menuTrigger" class="nav-pill-btn" aria-label="Buka Menu Navigasi" title="Buka Menu">
-      <span class="pill-indicator"></span>
-      <svg class="chevron-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-    </button>
+    <div class="top-bar-inner">
+      <div class="top-bar-brand">
+        <a href="#home" class="top-bar-logo menu-nav-link" data-view="home">Mhazkha<span class="brand-dot">.</span></a>
+        <span class="top-bar-status-badge">
+          <span class="status-pulse-dot"></span> Online
+        </span>
+      </div>
+
+      <button id="menuTrigger" class="nav-bar-menu-btn" aria-label="Buka Menu Navigasi" title="Buka Menu">
+        <span class="btn-menu-label">Menu</span>
+        <svg class="chevron-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </button>
+    </div>
   </header>
 
-  <!-- Fullscreen / Modal Menu Overlay -->
+  <!-- Slide-Down Top Menu Drawer -->
   <div id="menuOverlay" class="menu-overlay" aria-hidden="true">
     <div class="menu-backdrop" id="menuBackdrop"></div>
     <div class="menu-container">
