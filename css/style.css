@@ -4,32 +4,34 @@
    ========================================================= */
 
 :root {
-  /* Color Palette */
-  --bg-main: #0B0E14;
-  --bg-surface: #121822;
-  --bg-surface-elevated: #182230;
-  --bg-card: #141C26;
-  --bg-card-hover: #1A2636;
-  --bg-teal-dark: #0D2227;
+  /* Updated Color Palette (Issue #4) */
+  --bg-main: #1A1F24;
+  --bg-card: #222222;
+  --bg-card-hover: #2b323a;
+  --bg-surface: #222222;
+  --bg-surface-elevated: #283038;
+  --bg-teal-dark: #044343;
 
   /* Accent Colors */
-  --accent-teal: #00D2B4;
-  --accent-mint: #10B981;
-  --accent-amber: #F59E0B;
-  --accent-purple: #8B5CF6;
+  --accent-teal-deep: #045757;
+  --accent-teal: #00D1C1;
+  --accent-amber: #FFB347;
+  --accent-purple: #8B7DFF;
   --accent-blue: #38BDF8;
+  --accent-mint: #00D1C1;
 
   /* Text Colors */
-  --text-primary: #F1F5F9;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
-  --text-inverse: #0B0E14;
+  --text-primary: #E4E4E4;
+  --text-secondary: #A0ACB8;
+  --text-muted: #6E7C8A;
+  --text-inverse: #1A1F24;
 
   /* Borders & Glows */
-  --border-subtle: rgba(148, 163, 184, 0.12);
-  --border-focus: rgba(0, 210, 180, 0.45);
-  --glow-teal: rgba(0, 210, 180, 0.18);
-  --glow-amber: rgba(245, 158, 11, 0.15);
+  --border-subtle: rgba(228, 228, 228, 0.12);
+  --border-focus: rgba(0, 209, 193, 0.45);
+  --glow-teal: rgba(0, 209, 193, 0.22);
+  --glow-amber: rgba(255, 179, 71, 0.22);
+  --glow-purple: rgba(139, 125, 255, 0.22);
 
   /* Fonts */
   --font-main: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -91,7 +93,7 @@ body {
   left: -120px;
 }
 
-/* ================= TOP FULL-WIDTH APP BAR (MOBILE / APP STYLE) ================= */
+/* ================= TOP FULL-WIDTH APP BAR (CLICKABLE & ARROW ONLY) ================= */
 .top-nav-bar {
   position: sticky;
   top: 0;
@@ -102,9 +104,17 @@ body {
   justify-content: space-between;
   z-index: 100;
   padding: 0;
-  background: #092024;
-  border-bottom: 1.5px solid var(--accent-teal);
-  box-shadow: 0 4px 20px rgba(0, 210, 180, 0.15);
+  background: #044343;
+  border-bottom: 2px solid var(--accent-teal-deep);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--trans-fast), border-color var(--trans-fast);
+}
+
+.top-nav-bar:hover {
+  background: #055050;
+  border-bottom-color: var(--accent-teal);
 }
 
 .top-bar-inner {
@@ -113,7 +123,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 2rem;
+  padding: 0.85rem 2rem;
 }
 
 .top-bar-brand {
@@ -125,9 +135,13 @@ body {
 .top-bar-logo {
   font-size: 1.25rem;
   font-weight: 800;
-  color: #FFFFFF;
+  color: var(--text-primary);
   text-decoration: none;
   letter-spacing: -0.5px;
+}
+
+.brand-dot {
+  color: var(--accent-teal);
 }
 
 .top-bar-status-badge {
@@ -137,10 +151,10 @@ body {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--accent-teal);
-  background: rgba(0, 210, 180, 0.12);
+  background: rgba(0, 209, 193, 0.12);
   padding: 2px 8px;
   border-radius: var(--radius-full);
-  border: 1px solid rgba(0, 210, 180, 0.3);
+  border: 1px solid rgba(0, 209, 193, 0.3);
 }
 
 .status-pulse-dot {
@@ -151,74 +165,72 @@ body {
   box-shadow: 0 0 8px var(--accent-teal);
 }
 
-.nav-bar-menu-btn {
+.top-bar-arrow-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar-arrow-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 18px;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  background: var(--accent-teal-deep);
+  color: var(--text-primary);
+  border: 1px solid var(--accent-teal);
+  border-radius: 50%;
+  cursor: pointer;
+  pointer-events: none;
+  transition: transform var(--trans-smooth), background-color var(--trans-fast), box-shadow var(--trans-fast);
+}
+
+.top-nav-bar:hover .nav-bar-arrow-btn {
   background: var(--accent-teal);
   color: var(--text-inverse);
-  font-weight: 700;
-  font-size: 0.85rem;
-  border: none;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition: transform var(--trans-fast), opacity var(--trans-fast), box-shadow var(--trans-fast);
+  box-shadow: 0 0 12px var(--glow-teal);
 }
 
-.nav-bar-menu-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 15px rgba(0, 210, 180, 0.4);
+.chevron-icon {
+  stroke: currentColor;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.nav-bar-menu-btn .chevron-icon {
-  stroke: var(--text-inverse);
-  transition: transform var(--trans-smooth);
+.top-nav-bar.menu-open .chevron-icon {
+  transform: rotate(180deg);
 }
 
-.nav-bar-menu-btn:hover .chevron-icon {
-  transform: translateY(2px);
-}
-
-/* ================= MENU OVERLAY (SLIDE DOWN FROM TOP) ================= */
-.menu-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--trans-smooth);
-}
-
-.menu-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.menu-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(11, 14, 20, 0.88);
-  backdrop-filter: blur(14px);
-}
-
-.menu-container {
-  position: relative;
+/* ================= PUSH-DOWN MENU DRAWER (ACCORDION PUSH-DOWN) ================= */
+.push-down-menu {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  background: #171d22;
+  border-bottom: 0px solid transparent;
   width: 100%;
-  max-width: 100%;
-  background: var(--bg-surface);
-  border-bottom: 2px solid var(--accent-teal);
-  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-  padding: 2rem 2.5rem;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 10px 30px var(--glow-teal);
-  transform: translateY(-100%);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  z-index: 90;
 }
 
-.menu-overlay.active .menu-container {
+.push-down-menu.open {
+  grid-template-rows: 1fr;
+  border-bottom: 2px solid var(--accent-teal-deep);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.5);
+}
+
+.menu-inner {
+  overflow: hidden;
+  min-height: 0;
+  max-width: 1100px;
+  padding: 0 2rem;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, transform 0.35s ease;
+}
+
+.push-down-menu.open .menu-inner {
+  padding: 2rem 2rem 2.5rem;
+  opacity: 1;
   transform: translateY(0);
 }
 
@@ -227,20 +239,15 @@ body {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 1.25rem;
+  padding-bottom: 1rem;
   margin-bottom: 1.5rem;
 }
 
-.brand-logo {
-  font-size: 1.5rem;
+.menu-header-title {
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-primary);
-  text-decoration: none;
-  letter-spacing: -0.5px;
-}
-
-.brand-dot {
-  color: var(--accent-teal);
+  letter-spacing: -0.3px;
 }
 
 .menu-header-actions {
@@ -250,7 +257,7 @@ body {
 }
 
 .btn-hire-pill {
-  padding: 6px 16px;
+  padding: 6px 18px;
   background: var(--accent-teal);
   color: var(--text-inverse);
   font-weight: 700;
@@ -266,26 +273,6 @@ body {
   transform: scale(1.04);
 }
 
-.btn-close-menu {
-  background: transparent;
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: var(--trans-fast);
-}
-
-.btn-close-menu:hover {
-  color: var(--accent-teal);
-  border-color: var(--accent-teal);
-  transform: rotate(90deg);
-}
-
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -295,7 +282,7 @@ body {
 .menu-card {
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 1.25rem;
+  padding: 1.25rem 1.25rem;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -321,7 +308,7 @@ body {
 .menu-card:hover {
   background: var(--bg-teal-dark);
   border-color: var(--accent-teal);
-  transform: translateY(-3px);
+  transform: translateY(-2px);
 }
 
 .menu-card:hover::before {
@@ -332,11 +319,11 @@ body {
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--accent-teal);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .menu-card-title {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
   letter-spacing: -0.3px;
   margin-bottom: 0.25rem;
@@ -352,7 +339,7 @@ body {
   padding-top: 1rem;
   border-top: 1px solid var(--border-subtle);
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .menu-home-btn {
@@ -379,6 +366,7 @@ body {
   position: relative;
   z-index: 10;
   text-align: left;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .spa-view {
@@ -404,11 +392,11 @@ body {
   letter-spacing: -0.5px;
 }
 
-/* Badges */
+/* ================= SECTION BADGES WITH TARGET ICON (◎) ================= */
 .section-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-family: var(--font-mono);
   font-size: 0.85rem;
   color: var(--accent-teal);
@@ -419,12 +407,108 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 18px;
-  height: 18px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: var(--bg-teal-dark);
-  border: 1px solid var(--accent-teal);
-  font-size: 0.75rem;
+  border: 1.5px solid var(--accent-teal);
+  font-size: 0.95rem;
+  line-height: 1;
+  font-weight: 700;
+  box-shadow: 0 0 8px var(--glow-teal);
+}
+
+/* ================= PAGE-SPECIFIC ACCENT TOUCHES (ISSUE #4) ================= */
+/* 1. Home Page: Cyan / Vibrant Teal Accent (#00D1C1) */
+.badge-works, .badge-contact {
+  color: var(--accent-teal);
+}
+.badge-works .badge-icon, .badge-contact .badge-icon {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+  box-shadow: 0 0 8px var(--glow-teal);
+}
+
+/* 2. About Page: Soft Purple Accent (#8B7DFF) */
+.badge-about, .badge-journey {
+  color: var(--accent-purple);
+}
+.badge-about .badge-icon, .badge-journey .badge-icon {
+  border-color: var(--accent-purple);
+  color: var(--accent-purple);
+  background: rgba(139, 125, 255, 0.12);
+  box-shadow: 0 0 8px var(--glow-purple);
+}
+#view-about .accent-text {
+  color: var(--accent-purple);
+}
+#view-about .avatar-image-container {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 20px var(--glow-purple);
+}
+#view-about .profile-details-list li {
+  border-left-color: var(--accent-purple);
+}
+#view-about .timeline-container {
+  border-left-color: rgba(139, 125, 255, 0.35);
+}
+#view-about .timeline-marker {
+  border-color: var(--accent-purple);
+  box-shadow: 0 0 10px var(--accent-purple);
+}
+
+/* 3. Projects Page: Deep Teal & Cyan Accent (#045757 & #00D1C1) */
+.badge-projects {
+  color: var(--accent-teal);
+}
+.badge-projects .badge-icon {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+  background: var(--bg-teal-dark);
+  box-shadow: 0 0 8px var(--glow-teal);
+}
+#view-projects .filter-btn.active {
+  background: var(--accent-teal-deep);
+  border-color: var(--accent-teal);
+  color: var(--text-primary);
+  box-shadow: 0 0 12px var(--glow-teal);
+}
+#view-projects .project-card-full:hover {
+  border-color: var(--accent-teal);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), 0 0 15px var(--glow-teal);
+}
+
+/* 4. Stack Page: Warm Amber Accent (#FFB347) */
+.badge-stack {
+  color: var(--accent-amber);
+}
+.badge-stack .badge-icon {
+  border-color: var(--accent-amber);
+  color: var(--accent-amber);
+  background: rgba(255, 179, 71, 0.12);
+  box-shadow: 0 0 8px var(--glow-amber);
+}
+#view-stack .stack-group-title::before {
+  background: var(--accent-amber);
+  box-shadow: 0 0 8px var(--accent-amber);
+}
+#view-stack .stack-card:hover {
+  background: #2a2318;
+  border-color: var(--accent-amber);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 16px var(--glow-amber);
+}
+#view-stack .stack-card:hover .stack-name {
+  color: var(--accent-amber);
+}
+
+/* 5. Logs Page: Multi-Accent */
+.badge-logs {
+  color: var(--accent-teal);
+}
+.badge-logs .badge-icon {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+  box-shadow: 0 0 8px var(--glow-teal);
 }
 
 /* Section Blocks */

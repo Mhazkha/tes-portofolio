@@ -5,10 +5,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements
+  const topNavBar = document.getElementById('topNavBar');
   const menuTrigger = document.getElementById('menuTrigger');
-  const menuOverlay = document.getElementById('menuOverlay');
-  const menuBackdrop = document.getElementById('menuBackdrop');
-  const menuCloseBtn = document.getElementById('menuCloseBtn');
+  const pushDownMenu = document.getElementById('pushDownMenu');
   const menuNavLinks = document.querySelectorAll('.menu-nav-link');
   
   const views = document.querySelectorAll('.spa-view');
@@ -131,22 +130,58 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial call
   handleHashChange();
 
-  // ================= 2. MENU OVERLAY TOGGLE =================
+  // ================= 2. PUSH-DOWN MENU TOGGLE =================
   function openMenu() {
-    menuOverlay.classList.add('active');
-    menuOverlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    if (!pushDownMenu) return;
+    pushDownMenu.classList.add('open');
+    pushDownMenu.setAttribute('aria-hidden', 'false');
+    if (topNavBar) {
+      topNavBar.classList.add('menu-open');
+      topNavBar.setAttribute('aria-expanded', 'true');
+    }
   }
 
   function closeMenu() {
-    menuOverlay.classList.remove('active');
-    menuOverlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+    if (!pushDownMenu) return;
+    pushDownMenu.classList.remove('open');
+    pushDownMenu.setAttribute('aria-hidden', 'true');
+    if (topNavBar) {
+      topNavBar.classList.remove('menu-open');
+      topNavBar.setAttribute('aria-expanded', 'false');
+    }
   }
 
-  menuTrigger.addEventListener('click', openMenu);
-  menuCloseBtn.addEventListener('click', closeMenu);
-  menuBackdrop.addEventListener('click', closeMenu);
+  function toggleMenu() {
+    if (!pushDownMenu) return;
+    if (pushDownMenu.classList.contains('open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  // Click on top bar or arrow toggles menu
+  if (topNavBar) {
+    topNavBar.addEventListener('click', (e) => {
+      // Don't toggle if clicking on direct link
+      if (e.target.closest('a')) return;
+      toggleMenu();
+    });
+
+    topNavBar.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+      }
+    });
+  }
+
+  if (menuTrigger) {
+    menuTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
+  }
 
   menuNavLinks.forEach(link => {
     link.addEventListener('click', (e) => {

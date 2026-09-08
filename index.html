@@ -15,43 +15,37 @@
   <div class="glow-orb glow-teal"></div>
   <div class="glow-orb glow-amber"></div>
 
-  <!-- Full-Width Top Bar (Mobile / App Bar Style) -->
-  <header class="top-nav-bar">
+  <!-- Full-Width Clickable Top Bar (Arrow only) -->
+  <header class="top-nav-bar" id="topNavBar" role="button" aria-expanded="false" aria-label="Toggle Menu Navigasi" tabindex="0">
     <div class="top-bar-inner">
       <div class="top-bar-brand">
-        <a href="#home" class="top-bar-logo menu-nav-link" data-view="home">Mhazkha<span class="brand-dot">.</span></a>
+        <a href="#home" class="top-bar-logo menu-nav-link" data-view="home" onclick="event.stopPropagation();">Mhazkha<span class="brand-dot">.</span></a>
         <span class="top-bar-status-badge">
           <span class="status-pulse-dot"></span> Online
         </span>
       </div>
 
-      <button id="menuTrigger" class="nav-bar-menu-btn" aria-label="Buka Menu Navigasi" title="Buka Menu">
-        <span class="btn-menu-label">Menu</span>
-        <svg class="chevron-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9"></polyline>
-        </svg>
-      </button>
+      <div class="top-bar-arrow-wrap">
+        <button id="menuTrigger" class="nav-bar-arrow-btn" aria-label="Buka/Tutup Menu" title="Menu Navigasi">
+          <svg class="chevron-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- Slide-Down Top Menu Drawer -->
-  <div id="menuOverlay" class="menu-overlay" aria-hidden="true">
-    <div class="menu-backdrop" id="menuBackdrop"></div>
-    <div class="menu-container">
+  <!-- Push-Down Menu Drawer (pushes content downward when expanded) -->
+  <nav id="pushDownMenu" class="push-down-menu" aria-hidden="true" aria-label="Menu Utama">
+    <div class="menu-inner">
       <div class="menu-header">
-        <a href="#home" class="brand-logo menu-nav-link" data-view="home">Mhazkha<span class="brand-dot">.</span></a>
+        <span class="menu-header-title">Menu Navigasi</span>
         <div class="menu-header-actions">
           <button id="menuHireBtn" class="btn-hire-pill">Hire me</button>
-          <button id="menuCloseBtn" class="btn-close-menu" aria-label="Tutup Menu">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
         </div>
       </div>
 
-      <nav class="menu-grid" aria-label="Menu Utama">
+      <div class="menu-grid">
         <a href="#about" class="menu-card menu-nav-link" data-view="about">
           <span class="menu-card-num">01</span>
           <span class="menu-card-title">About</span>
@@ -72,7 +66,7 @@
           <span class="menu-card-title">Logs</span>
           <span class="menu-card-desc">Design, 3D, Music, Games</span>
         </a>
-      </nav>
+      </div>
 
       <div class="menu-footer">
         <a href="#home" class="menu-home-btn menu-nav-link" data-view="home">
@@ -84,7 +78,7 @@
         </a>
       </div>
     </div>
-  </div>
+  </nav>
 
   <!-- Main Content Container (SPA Views) -->
   <main class="main-wrapper">
@@ -108,8 +102,8 @@
 
       <!-- Selected Works Section -->
       <section class="section-block">
-        <div class="section-badge">
-          <span class="badge-icon">@</span> Selected works
+        <div class="section-badge badge-works">
+          <span class="badge-icon">◎</span> Selected works
         </div>
         
         <div class="cards-grid cards-grid-3" id="homeSelectedWorks">
@@ -174,8 +168,8 @@
 
       <!-- Contact Section -->
       <section class="section-block contact-section">
-        <div class="section-badge">
-          <span class="badge-icon">@</span> Contact
+        <div class="section-badge badge-contact">
+          <span class="badge-icon">◎</span> Contact
         </div>
         
         <div class="contact-card">
@@ -220,8 +214,8 @@
         <span class="brand-text">Mhazkha<span class="brand-dot">.</span></span>
       </div>
 
-      <div class="section-badge">
-        <span class="badge-icon">@</span> About
+      <div class="section-badge badge-about">
+        <span class="badge-icon">◎</span> About
       </div>
 
       <!-- About Profile Content with Avatar -->
@@ -291,8 +285,8 @@
 
       <!-- Journey Section (Moved from Stack page to About page) -->
       <section class="section-block journey-section">
-        <div class="section-badge">
-          <span class="badge-icon">&bull;</span> Journey &amp; Milestones
+        <div class="section-badge badge-journey">
+          <span class="badge-icon">◎</span> Journey &amp; Milestones
         </div>
 
         <div class="timeline-container">
@@ -332,8 +326,8 @@
         <span class="brand-text">Mhazkha<span class="brand-dot">.</span></span>
       </div>
 
-      <div class="section-badge">
-        <span class="badge-icon">@</span> Projects
+      <div class="section-badge badge-projects">
+        <span class="badge-icon">◎</span> Projects
       </div>
 
       <div class="projects-hero-header">
@@ -456,8 +450,8 @@
         <span class="brand-text">Mhazkha<span class="brand-dot">.</span></span>
       </div>
 
-      <div class="section-badge">
-        <span class="badge-icon">@</span> Stack
+      <div class="section-badge badge-stack">
+        <span class="badge-icon">◎</span> Stack
       </div>
 
       <div class="stack-hero-header">
@@ -644,8 +638,8 @@
         <span class="brand-text">Mhazkha<span class="brand-dot">.</span></span>
       </div>
 
-      <div class="section-badge">
-        <span class="badge-icon">@</span> Logs
+      <div class="section-badge badge-logs">
+        <span class="badge-icon">◎</span> Logs
       </div>
 
       <div class="logs-hero-header">
