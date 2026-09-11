@@ -119,17 +119,19 @@ body {
 
 .top-bar-inner {
   width: 100%;
-  max-width: 1100px;
-  display: flex;
+  max-width: 1600px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
-  padding: 0.85rem 2rem;
+  padding: 0.85rem 2.5rem;
 }
 
 .top-bar-brand {
   display: flex;
   align-items: center;
   gap: 12px;
+  justify-self: start;
 }
 
 .top-bar-logo {
@@ -144,51 +146,37 @@ body {
   color: var(--accent-teal);
 }
 
-.top-bar-status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--accent-teal);
-  background: rgba(0, 209, 193, 0.12);
-  padding: 2px 8px;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(0, 209, 193, 0.3);
-}
-
-.status-pulse-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent-teal);
-  box-shadow: 0 0 8px var(--accent-teal);
-}
-
 .top-bar-arrow-wrap {
   display: flex;
   align-items: center;
+  justify-self: center;
+}
+
+/* Spacer to balance the 3-column grid layout */
+.top-bar-spacer {
+  justify-self: end;
 }
 
 .nav-bar-arrow-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  height: 38px;
-  background: var(--accent-teal-deep);
+  width: auto;
+  height: auto;
+  padding: 6px;
+  background: none;
   color: var(--text-primary);
-  border: 1px solid var(--accent-teal);
-  border-radius: 50%;
+  border: none;
+  border-radius: 0;
   cursor: pointer;
   pointer-events: none;
-  transition: transform var(--trans-smooth), background-color var(--trans-fast), box-shadow var(--trans-fast);
+  opacity: 0.7;
+  transition: transform var(--trans-smooth), opacity var(--trans-fast), color var(--trans-fast);
 }
 
 .top-nav-bar:hover .nav-bar-arrow-btn {
-  background: var(--accent-teal);
-  color: var(--text-inverse);
-  box-shadow: 0 0 12px var(--glow-teal);
+  opacity: 1;
+  color: var(--accent-teal);
 }
 
 .chevron-icon {
@@ -221,15 +209,17 @@ body {
 .menu-inner {
   overflow: hidden;
   min-height: 0;
-  max-width: 1100px;
-  padding: 0 2rem;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2.5rem;
   opacity: 0;
   transform: translateY(-8px);
   transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, transform 0.35s ease;
 }
 
 .push-down-menu.open .menu-inner {
-  padding: 2rem 2rem 2.5rem;
+  padding: 2.5rem 2.5rem 3rem;
   opacity: 1;
   transform: translateY(0);
 }
@@ -275,20 +265,20 @@ body {
 
 .menu-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
 }
 
 .menu-card {
   display: flex;
   flex-direction: column;
-  padding: 1.25rem 1.25rem;
+  padding: 1.75rem 1.5rem;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   text-decoration: none;
   color: var(--text-primary);
-  transition: all var(--trans-smooth);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
 }
@@ -302,35 +292,87 @@ body {
   height: 100%;
   background: var(--accent-teal);
   opacity: 0;
-  transition: opacity var(--trans-fast);
+  transition: opacity var(--trans-fast), background var(--trans-fast);
 }
 
-.menu-card:hover {
-  background: var(--bg-teal-dark);
+/* --- Dynamic Hover Accent Colors per Card --- */
+/* Card 1: About — Cyan accent */
+.menu-card:nth-child(1):hover {
+  background: rgba(0, 209, 193, 0.08);
   border-color: var(--accent-teal);
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35), 0 0 20px var(--glow-teal);
+}
+.menu-card:nth-child(1):hover::before {
+  opacity: 1;
+  background: var(--accent-teal);
+}
+.menu-card:nth-child(1):hover .menu-card-num {
+  color: var(--accent-teal);
 }
 
-.menu-card:hover::before {
+/* Card 2: Projects — Soft Purple accent */
+.menu-card:nth-child(2):hover {
+  background: rgba(139, 125, 255, 0.08);
+  border-color: var(--accent-purple);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35), 0 0 20px var(--glow-purple);
+}
+.menu-card:nth-child(2):hover::before {
   opacity: 1;
+  background: var(--accent-purple);
+}
+.menu-card:nth-child(2):hover .menu-card-num {
+  color: var(--accent-purple);
+}
+
+/* Card 3: Stack — Warm Amber accent */
+.menu-card:nth-child(3):hover {
+  background: rgba(255, 179, 71, 0.08);
+  border-color: var(--accent-amber);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35), 0 0 20px var(--glow-amber);
+}
+.menu-card:nth-child(3):hover::before {
+  opacity: 1;
+  background: var(--accent-amber);
+}
+.menu-card:nth-child(3):hover .menu-card-num {
+  color: var(--accent-amber);
+}
+
+/* Card 4: Logs — Sky Blue accent */
+.menu-card:nth-child(4):hover {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: var(--accent-blue);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35), 0 0 20px rgba(56, 189, 248, 0.22);
+}
+.menu-card:nth-child(4):hover::before {
+  opacity: 1;
+  background: var(--accent-blue);
+}
+.menu-card:nth-child(4):hover .menu-card-num {
+  color: var(--accent-blue);
 }
 
 .menu-card-num {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--accent-teal);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
+  transition: color var(--trans-fast);
 }
 
 .menu-card-title {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
   letter-spacing: -0.3px;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.35rem;
 }
 
 .menu-card-desc {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
 }
 
@@ -360,9 +402,10 @@ body {
 
 /* ================= MAIN WRAPPER & SPA VIEWS (LEFT-ALIGNED) ================= */
 .main-wrapper {
-  max-width: 1100px;
-  margin: 0;
-  padding: 2.5rem 2rem 5rem;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 3rem 5rem;
   position: relative;
   z-index: 10;
   text-align: left;
@@ -1064,20 +1107,20 @@ body {
 
 .stack-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
 }
 
 .stack-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 1.5rem 1rem;
+  padding: 1.75rem 1.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 14px;
   cursor: pointer;
   transition: all var(--trans-smooth);
 }
@@ -1386,9 +1429,23 @@ body {
 }
 
 /* ================= RESPONSIVE DESIGN ================= */
+@media (max-width: 1024px) {
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2rem;
+  }
+
+  .top-bar-inner {
+    padding: 0.85rem 1.25rem;
+  }
+
+  .main-wrapper {
+    padding: 2rem 1.25rem 4rem;
   }
   
   .cards-grid-3 {
@@ -1416,7 +1473,15 @@ body {
     grid-template-columns: 1fr;
   }
 
-  .menu-container {
-    padding: 1.5rem;
+  .menu-inner {
+    padding: 0 1.25rem;
+  }
+
+  .push-down-menu.open .menu-inner {
+    padding: 1.5rem 1.25rem 2rem;
+  }
+
+  .menu-card {
+    padding: 1.25rem 1rem;
   }
 }
