@@ -1081,6 +1081,8 @@ body {
 
 /* ================= STACK VIEW (SVG LOGOS) ================= */
 .stack-categories-container {
+  width: 100%;
+  max-width: none;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
